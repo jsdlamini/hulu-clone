@@ -1,20 +1,20 @@
 import React from "react";
 import "./Nav.css";
+import requests from "./requests";
 
-function Nav() {
+function Nav({ setselectedOption }) {
   return (
     <div className="nav">
-      <h2>Trending</h2>
-      <h2>Top Tated</h2>
-      <h2>Action</h2>
-      <h2>Comedy</h2>
-      <h2>Horro</h2>
-      <h2>Comedy</h2>
-      <h2>Romance</h2>
-      <h2>Sci-fi</h2>
-      <h2>Western</h2>
-      <h2>Animation</h2>
-      <h2>TV Movie</h2>
+      <h2 onClick ={ () => setselectedOption( requests.fetchTrending)  }  >Trending</h2>
+      <h2 onClick ={ () => setselectedOption( requests.fetchTopRated)  }>Top Tated</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchActionMovies) } >Action</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchComedyMovies)  }>Comedy</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchHorrorMovies)  }>Horror</h2> 
+      <h2  onClick ={ () => setselectedOption( requests.fetchRomanceMovies)  }>Romance</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchSciFi) } > Sci-fi</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchWestern) } >Western</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchAnimation)}  >Animation</h2>
+      <h2  onClick ={ () => setselectedOption( requests.fetchTv) } >TV Movie</h2>
     </div>
   );
 }

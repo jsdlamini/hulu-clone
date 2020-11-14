@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Results.css";
 import VideoCard from "./VideoCard";
+import axios from "./axios";
 
-function Results() {
-  return <div className="results">
-      <VideoCard />
-      <VideoCard />
+function Results({ selectedOption }) {
+  const [movies, setMovies] = useState([]);
 
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      <VideoCard />
-      
+  useEffect(() => {
+    //Run this code once when the results component loads/mounts
+    // console.log("johnson...");
+    async function fetchData() {
+      const request = await axios.get(selectedOption);
+      setMovies(request.data.results);
+      return request;
+    }
+    fetchData();
+  }, [selectedOption]);
 
-
-
-  </div>;
+  return (
+    <div className="results">
+      {movies.map((movie) => (
+        <VideoCard key={movie.id} movie={movie} />
+      ))}
+    </div>
+  );
 }
 
 export default Results;
